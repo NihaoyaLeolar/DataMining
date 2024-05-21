@@ -188,8 +188,12 @@ export default {
 
             if (this.classNumber == 1) {
                 this.goto_mining1(params);
+                this.$store.commit("incrementMiningStep");
+                this.$router.push("/mining/step3for1");
             } else {
                 this.goto_mining2(params);
+                this.$store.commit("incrementMiningStep");
+                this.$router.push("/mining/step3for2");
             }
         },
         goto_mining1(params) {
@@ -197,6 +201,12 @@ export default {
                 .post("/mining/style", params)
                 .then((response) => {
                     // 处理成功响应的数据
+                    console.log("挖掘完毕，获得记录：", response.data.record);
+                    this.$store.commit("updateMiningRecord", response.data.record);
+                    console.log("挖掘完毕，获得请求：", response.data.request);
+                    this.$store.commit("updateMiningRequest", response.data.request);
+                    console.log("挖掘完毕，获得结果：", response.data.result);
+                    this.$store.commit("updateMiningResult", response.data.result);
                 })
                 .catch((error) => {
                     // 处理请求错误

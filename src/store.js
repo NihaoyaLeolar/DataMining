@@ -11,6 +11,9 @@ const store = new Vuex.Store({
         currentMiningStep: 1,  // 初始值为1
         miningClassNumber: 0,  //用户选择的知识挖掘类型
         miningTaskDescription: "",
+        miningRecord: null,
+        miningRequest: null,
+        miningResult: null,
 
         currentProfilingStep: 1,
         profileData: null
@@ -42,7 +45,30 @@ const store = new Vuex.Store({
         },
         updateProfileData(state, newData) {
             state.profileData = newData;
-        }
+        },
+
+        updateMiningRecord(state, record) {
+            state.miningRecord = record;
+        },
+        clearMiningRecord(state) {
+            state.miningRecord = null;
+        },
+
+        updateMiningRequest(state, request) {
+            state.miningRequest = request;
+        },
+        clearMiningRequest(state) {
+            state.miningRequest = null;
+        },
+
+        updateMiningResult(state, result) {
+            state.miningResult = result;
+        },
+        clearMiningResult(state) {
+            state.miningResult = null;
+        },
+
+        
 
     },
     actions: {

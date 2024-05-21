@@ -1,3 +1,21 @@
+export const miningType = [
+    { name: "特征型知识", type: "STYLE"},
+    { name: "发展型知识", type: "DEVELOP"},
+    { name: "交叉型知识", type: "CROSS"},
+    { name: "比较型知识", type: "COMPARE"},
+]
+
+export const styleMiningResultType = [
+    { name: "平均值", type: "avg"},
+    { name: "最大值", type: "max"},
+    { name: "最小值", type: "min"},
+    { name: "中位数", type: "med"},
+    { name: "方差", type: "variance"},
+    { name: "25百分位数", type: "p25"},
+    { name: "极差", type: "extremeDeviation"},
+    { name: "变异系数", type: "coefficientOfVariation"},
+]
+
 export const groupsByRegion = [
     { label: "全部", value: "ALL_REGION" },
     { label: "北部地区", value: "NORTHERN_REGION" },
