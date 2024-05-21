@@ -5,13 +5,13 @@
 </template>
 
 <script>
-import MiningLayout from "@/components/MiningLayout.vue";
+import MiningLayout from "../../components/layout/MiningLayout.vue";
 
 export default {
     components: { MiningLayout },
     methods: {
         next() {
-            this.$store.commit("incrementStep");
+            this.$store.commit("incrementMiningStep");
         },
     },
 };

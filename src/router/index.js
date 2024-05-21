@@ -2,14 +2,16 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import store from '@/store'; // 确保正确导入 Vuex store
 
-import StudentImagePage from '@/views/StudentImagePage.vue'
-import KnowledgeRepoPage from '@/views/KnowledgeRepoPage.vue'
-import MiningPage from '@/views/MiningPage.vue'
+import StudentImagePage from '../views/Profiling/StudentImagePage.vue'
+import KnowledgeRepoPage from '../views/Repo/KnowledgeRepoPage.vue'
+import MiningPage from '../views/Mining/MiningPage.vue'
 
-import MiningPageStep1 from '@/views/MiningPageStep1.vue'
-import MiningPageStep2For12 from '@/views/MiningPageStep2For12.vue'
-import MiningPageStep2For3 from '@/views/MiningPageStep2For3.vue'
-import MiningPageStep2For4 from '@/views/MiningPageStep2For4.vue'
+import MiningPageStep1 from '../views/Mining/MiningPageStep1.vue'
+import MiningPageStep2For12 from '../views/Mining/MiningPageStep2For12.vue'
+import MiningPageStep2For3 from '../views/Mining/MiningPageStep2For3.vue'
+import MiningPageStep2For4 from '../views/Mining/MiningPageStep2For4.vue'
+
+import ProfilingPageStep1 from '../views/Profiling/ProfilingPageStep1.vue'
 
 Vue.use(Router)
 
@@ -18,7 +20,17 @@ export default new Router({
         {
             path: '/stuimage',
             name: 'StudentImagePage',
-            component: StudentImagePage
+            component: StudentImagePage,
+            //在这里定义子路由（我的前端有两个嵌套的router-view，所以这里使用子路由）
+            children: [
+                {
+                    path: '',
+                    component: ProfilingPageStep1,
+                }, {
+                    path: 'step2',
+                    component: ProfilingPageStep1,
+                }
+            ]
         }, {
             path: '/mining',
             name: 'MiningPage',

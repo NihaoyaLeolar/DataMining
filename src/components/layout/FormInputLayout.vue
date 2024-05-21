@@ -22,7 +22,7 @@
 
 
 <script>
-import FormTipLayout from "../components/FormTipLayout.vue";
+import FormTipLayout from "./FormTipLayout.vue";
 
 export default {
     components: {

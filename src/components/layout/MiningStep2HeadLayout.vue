@@ -30,7 +30,7 @@
 export default {
     computed: {
         classNumber() {
-            return this.$store.state.classNumber;
+            return this.$store.state.miningClassNumber;
         },
     },
 };

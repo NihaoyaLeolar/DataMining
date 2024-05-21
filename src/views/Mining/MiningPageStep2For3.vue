@@ -77,11 +77,11 @@
 </template>
 
 <script>
-import MiningStep2HeadLayout from "../components/MiningStep2HeadLayout.vue";
-import MiningStep2TailLayout from "@/components/MiningStep2TailLayout.vue";
-import FormTipLayout from "../components/FormTipLayout.vue";
-import FormInputLayout from "../components/FormInputLayout.vue";
-import MyDialog from "../components/MyDialog.vue";
+import MiningStep2HeadLayout from "../../components/layout/MiningStep2HeadLayout.vue";
+import MiningStep2TailLayout from "../../components/layout/MiningStep2TailLayout.vue";
+import FormTipLayout from "../../components/layout/FormTipLayout.vue";
+import FormInputLayout from "../../components/layout/FormInputLayout.vue";
+import MyDialog from "../../components/MyDialog.vue";
 
 import {
     concepts,
@@ -109,9 +109,6 @@ export default {
         };
     },
     computed: {
-        classNumber() {
-            return this.$store.state.classNumber;
-        },
         // 将导入的选项数据赋值给组件的计算属性
         concepts() {
             return concepts;

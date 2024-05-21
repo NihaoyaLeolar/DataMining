@@ -46,28 +46,28 @@
 </template>
 
 <script>
-import MiningClassLayout from "@/components/MiningClassLayout.vue";
+import MiningClassLayout from "../../components/layout/MiningClassLayout.vue";
 export default {
     components: { MiningClassLayout },
     methods: {
         style_click() {
-            this.$store.commit("incrementStep");
-            this.$store.commit("setClassNumber", 1);
+            this.$store.commit("incrementMiningStep");
+            this.$store.commit("setMiningClassNumber", 1);
             this.$router.push("/mining/step2for12");
         },
         develop_click() {
-            this.$store.commit("incrementStep");
-            this.$store.commit("setClassNumber", 2);
+            this.$store.commit("incrementMiningStep");
+            this.$store.commit("setMiningClassNumber", 2);
             this.$router.push("/mining/step2for12");
         },
         relevance_click() {
-            this.$store.commit("incrementStep");
-            this.$store.commit("setClassNumber", 3);
+            this.$store.commit("incrementMiningStep");
+            this.$store.commit("setMiningClassNumber", 3);
             this.$router.push("/mining/step2for3");
         },
         compare_click() {
-            this.$store.commit("incrementStep");
-            this.$store.commit("setClassNumber", 4);
+            this.$store.commit("incrementMiningStep");
+            this.$store.commit("setMiningClassNumber", 4);
             this.$router.push("/mining/step2for4");
         },
     },

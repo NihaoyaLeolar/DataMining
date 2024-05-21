@@ -9,7 +9,7 @@
             <ul>
                 <li>
                     <router-link to="/stuimage" class="nav-link">
-                        <div class="single-nav">
+                        <div class="single-nav" @click="resetProfilingPage">
                             <img src="@/assets/img.png" class="nav-img">
                             学生画像
                         </div>
@@ -18,7 +18,7 @@
 
                 <li>
                     <router-link to="/mining" class="nav-link">
-                        <div class="single-nav" @click="resetCurrentStep">
+                        <div class="single-nav" @click="resetMiningPage">
                             <img src="@/assets/mining.png" class="nav-img">
                             知识挖掘
                         </div>
@@ -43,10 +43,13 @@
 export default {
     methods: {
         //每次点击到mining的页面都希望重置step
-        resetCurrentStep() {
-            this.$store.commit("setCurrentStep", 1);
-            this.$store.commit("classNumber", 0);
+        resetMiningPage() {
+            this.$store.commit("setCurrentMiningStep", 1);
+            this.$store.commit("setMingingClassNumber", 0);
             this.$store.commit("setMiningTaskDescription", "");
+        },
+        resetProfilingPage() {
+            this.$store.commit("clearProfileData");
         },
     },
 };

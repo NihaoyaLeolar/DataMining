@@ -1,6 +1,6 @@
 <!-- ProgressComponent.vue -->
 <template>
-    <div class="step-bar">
+    <div class="stepbar">
         <div class="arrowline-img">
             <img v-if="step == 1" src="@/assets/arrow.png" class="arrow-img">
             <img v-else src="@/assets/line.png" class="line-img">
@@ -77,14 +77,14 @@ export default {
         //在本组件中直接使用计算属性名即可！
         step() {
             // 访问 Vuex store 中的 currentStep
-            return this.$store.state.currentStep;
+            return this.$store.state.currentMiningStep;
         },
     },
 };
 </script>
   
   <style scoped>
-.step-bar {
+.stepbar {
     display: flex;
     flex-direction: column; /* 在布局内竖着排列 */
     justify-content: center;

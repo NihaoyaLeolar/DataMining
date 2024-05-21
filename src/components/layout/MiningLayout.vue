@@ -3,7 +3,7 @@
 <template>
     <div class="container">
         <div class="left-container">
-            <StepBar class="bar"></StepBar>
+            <Stepbar class="bar"></Stepbar>
         </div>
         <div class="right-container">
             <div class="content">
@@ -14,7 +14,7 @@
 
 </template>
 
-<style >
+<style>
 .container {
     display: flex;
     margin: 0;
@@ -62,10 +62,10 @@
 </style>
 
 <script>
-import StepBar from "./StepBar.vue";
+import Stepbar from "../Stepbar.vue";
 export default {
     components: {
-        StepBar,
+        Stepbar,
     },
 };
 </script>

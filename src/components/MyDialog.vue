@@ -72,7 +72,7 @@
   <script>
 import { Dialog } from "element-ui";
 import { concepts } from "@/options.js";
-import FormTipLayout from "./FormTipLayout.vue";
+import FormTipLayout from "./layout/FormTipLayout.vue";
 import "element-ui/lib/theme-chalk/index.css";
 
 export default {
