@@ -45,8 +45,13 @@ export default {
         //每次点击到mining的页面都希望重置step
         resetMiningPage() {
             this.$store.commit("setCurrentMiningStep", 1);
-            this.$store.commit("setMingingClassNumber", 0);
+            this.$store.commit("setMiningClassNumber", 0);
             this.$store.commit("setMiningTaskDescription", "");
+            this.$store.commit("clearMiningRecord");
+            this.$store.commit("clearMiningRequest");
+            this.$store.commit("clearMiningResult");
+            this.$store.commit("clearSelectedNames");
+            this.$store.commit("clearKnowledgeList");
         },
         resetProfilingPage() {
             this.$store.commit("clearProfileData");

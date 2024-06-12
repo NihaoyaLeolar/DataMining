@@ -1,19 +1,19 @@
 export const miningType = [
-    { name: "特征型知识", type: "STYLE"},
-    { name: "发展型知识", type: "DEVELOP"},
-    { name: "交叉型知识", type: "CROSS"},
-    { name: "比较型知识", type: "COMPARE"},
+    { name: "特征型知识", type: "STYLE" },
+    { name: "发展型知识", type: "DEVELOP" },
+    { name: "交叉型知识", type: "CROSS" },
+    { name: "比较型知识", type: "COMPARE" },
 ]
 
 export const styleMiningResultType = [
-    { name: "平均值", type: "avg"},
-    { name: "最大值", type: "max"},
-    { name: "最小值", type: "min"},
-    { name: "中位数", type: "med"},
-    { name: "方差", type: "variance"},
-    { name: "25百分位数", type: "p25"},
-    { name: "极差", type: "extremeDeviation"},
-    { name: "变异系数", type: "coefficientOfVariation"},
+    { name: "平均值", type: "avg" },
+    { name: "最大值", type: "max" },
+    { name: "最小值", type: "min" },
+    { name: "中位数", type: "med" },
+    { name: "方差", type: "variance" },
+    { name: "25百分位数", type: "p25" },
+    { name: "极差", type: "extremeDeviation" },
+    { name: "变异系数", type: "coefficientOfVariation" },
 ]
 
 export const groupsByRegion = [
@@ -25,24 +25,24 @@ export const groupsByRegion = [
 ];
 
 export const groupsByUrbanOrRural = [
-    { label: "全部", value: "ALL_URBAN_OR_RURAL" },
+    { label: "城市与农村", value: "ALL_URBAN_OR_RURAL" },
     { label: "城镇", value: "URBAN" },
     { label: "乡村", value: "RURAL" },
 ];
 
 export const times = [
-    { label: "小学一年级", value: "1" },
-    { label: "小学二年级", value: "2" },
-    { label: "小学三年级", value: "3" },
-    { label: "小学四年级", value: "4" },
-    { label: "小学五年级", value: "5" },
-    { label: "小学六年级", value: "6" },
-    { label: "初中一年级", value: "7" },
-    { label: "初中二年级", value: "8" },
-    { label: "初中三年级", value: "9" },
-    { label: "高中一年级", value: "10" },
-    { label: "高中二年级", value: "11" },
-    { label: "高中三年级", value: "12" },
+    { label: "小学一年级", value: "G1" },
+    { label: "小学二年级", value: "G2" },
+    { label: "小学三年级", value: "G3" },
+    { label: "小学四年级", value: "G4" },
+    { label: "小学五年级", value: "G5" },
+    { label: "小学六年级", value: "G6" },
+    { label: "初中一年级", value: "G7" },
+    { label: "初中二年级", value: "G8" },
+    { label: "初中三年级", value: "G9" },
+    { label: "高中一年级", value: "G10" },
+    { label: "高中二年级", value: "G11" },
+    { label: "高中三年级", value: "G12" },
 ];
 
 //知识的概念，并进行8位编码
@@ -52,7 +52,7 @@ export const concepts = [
         { label: "基本信息", value: "d10000000", class: "维度", visible: false },
         { label: "自主发展", value: "d20000000", class: "维度", visible: true },
         { label: "文化修养", value: "d30000000", class: "维度", visible: true },
-        { label: "社会参与", value: "d40000000", class: "维度", visible: true },
+        { label: "社会参与", value: "d40000000", class: "维度", visible: false },
     ],
 
 

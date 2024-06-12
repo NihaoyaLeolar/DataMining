@@ -11,6 +11,7 @@ import MiningPageStep2For12 from '../views/Mining/MiningPageStep2For12.vue'
 import MiningPageStep2For3 from '../views/Mining/MiningPageStep2For3.vue'
 import MiningPageStep2For4 from '../views/Mining/MiningPageStep2For4.vue'
 import MiningPageStep3For1 from '../views/Mining/MiningPageStep3For1.vue'
+import MiningPageStep4 from '../views/Mining/MiningPageStep4.vue'
 
 import ProfilingPageStep1 from '../views/Profiling/ProfilingPageStep1.vue'
 
@@ -56,6 +57,9 @@ export default new Router({
                 }, {
                     path: 'step3for1',
                     component: MiningPageStep3For1
+                }, {
+                    path: 'step4',
+                    component: MiningPageStep4
                 }
 
             ]

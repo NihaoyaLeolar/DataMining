@@ -178,6 +178,7 @@ export default {
             this.generate();
             var params = {
                 concept_value: this.selectedConcept.value,
+                concept_name: this.selectedConcept.label,
                 grade_value1: this.selectedTime1.value,
                 grade_value2: this.selectedTime2.value,
                 groups_by_region: this.selectedGroupByRegion.value,
@@ -187,32 +188,71 @@ export default {
             };
 
             if (this.classNumber == 1) {
-                this.goto_mining1(params);
-                this.$store.commit("incrementMiningStep");
-                this.$router.push("/mining/step3for1");
+                //这里采用同步操作，因为http请求默认异步的，会出现没有拿到结果但是下一个页面已经开始加载的情况
+                this.goto_mining1(params)
+                    .then(() => {
+                        this.$store.commit("incrementMiningStep");
+                        this.$router.push("/mining/step3for1");
+                    })
+                    .catch((error) => {
+                        // 处理请求错误
+                        console.error("Error in mining:", error);
+                    });
             } else {
-                this.goto_mining2(params);
-                this.$store.commit("incrementMiningStep");
-                this.$router.push("/mining/step3for2");
+                this.goto_mining2(params)
+                    .then(() => {
+                        this.$store.commit("incrementMiningStep");
+                        this.$router.push("/mining/step3for2");
+                    })
+                    .catch((error) => {
+                        // 处理请求错误
+                        console.error("Error in mining:", error);
+                    });
             }
         },
         goto_mining1(params) {
-            this.$http
-                .post("/mining/style", params)
-                .then((response) => {
-                    // 处理成功响应的数据
-                    console.log("挖掘完毕，获得记录：", response.data.record);
-                    this.$store.commit("updateMiningRecord", response.data.record);
-                    console.log("挖掘完毕，获得请求：", response.data.request);
-                    this.$store.commit("updateMiningRequest", response.data.request);
-                    console.log("挖掘完毕，获得结果：", response.data.result);
-                    this.$store.commit("updateMiningResult", response.data.result);
-                })
-                .catch((error) => {
-                    // 处理请求错误
-                    console.error("Error sending GET request:", error);
-                });
+            // 在处理HTTP请求等异步操作时，使用Promise可以更好地控制异步操作的执行顺序和结果处理。当你需要在HTTP请求完成后执行某些操作时，
+            // 可以创建一个Promise对象来表示这个异步操作，并在异步操作完成后执行后续的操作。
+            // 这样可以确保在异步操作完成后再执行后续逻辑，避免了代码执行顺序不确定的问题。
+            return new Promise((resolve, reject) => {
+                this.$http
+                    .post("/mining/style", params)
+                    .then((response) => {
+                        // 处理成功响应的数据
+                        console.log(
+                            "挖掘完毕，获得记录：",
+                            response.data.record
+                        );
+                        this.$store.commit(
+                            "updateMiningRecord",
+                            response.data.record
+                        );
+                        console.log(
+                            "挖掘完毕，获得请求：",
+                            response.data.request
+                        );
+                        this.$store.commit(
+                            "updateMiningRequest",
+                            response.data.request
+                        );
+                        console.log(
+                            "挖掘完毕，获得结果：",
+                            response.data.result
+                        );
+                        this.$store.commit(
+                            "updateMiningResult",
+                            response.data.result
+                        );
+                        resolve(response); // 成功时调用resolve方法
+                    })
+                    .catch((error) => {
+                        // 处理请求错误
+                        console.error("Error sending GET request:", error);
+                        reject(error); // 失败时调用reject方法
+                    });
+            });
         },
+
         goto_mining2(params) {
             this.$http
                 .post("/mining/develop", params)

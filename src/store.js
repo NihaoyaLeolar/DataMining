@@ -14,6 +14,8 @@ const store = new Vuex.Store({
         miningRecord: null,
         miningRequest: null,
         miningResult: null,
+        selectedNames: null,  //用户在看到知识挖掘结果后，选择要生成知识的字段名组成的list
+        knowledgeList: null,
 
         currentProfilingStep: 1,
         profileData: null
@@ -68,7 +70,19 @@ const store = new Vuex.Store({
             state.miningResult = null;
         },
 
-        
+        updateSelectedNames(state, names) {
+            state.selectedNames = names;
+        },
+        clearSelectedNames(state) {
+            state.selectedNames = null;
+        },
+
+        updateKnowledgeList(state, list) {
+            state.knowledgeList = list;
+        },
+        clearKnowledgeList(state) {
+            state.knowledgeList = null;
+        }
 
     },
     actions: {
