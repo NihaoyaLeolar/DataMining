@@ -68,7 +68,7 @@
                     <button @click="generate">生成挖<br>掘计划</button>
                 </template>
                 <template v-slot:nextbutton>
-                    <button>开始<br>挖掘</button>
+                    <button @click="goto_mining">开始<br>挖掘</button>
                 </template>
             </mining-step2-tail-layout>
         </div>
@@ -190,6 +190,56 @@ export default {
             // 处理对话框1中选定的概念
             console.log("conceptSelectedDialog3 事件被触发了");
             this.selectedConcept2 = concept;
+        },
+        goto_mining() {
+            if (this.$store.state.miningTaskDescription == "") {
+                alert("请先生成挖掘计划！");
+                return;
+            }
+            //防止在生成计划后、点击挖掘前又更改了表单内容，在挖掘前重新更新一下
+            this.generate();
+
+            var params = {
+                concept_value1: this.selectedConcept1.value,
+                concept_name1: this.selectedConcept1.label,
+                concept_value2: this.selectedConcept2.value,
+                concept_name2: this.selectedConcept2.label,
+                grade_value1: this.selectedTime1.value,
+                grade_value2: this.selectedTime2.value,
+                groups_by_region: this.selectedGroupByRegion.value,
+                groups_by_urban_or_rural:
+                    this.selectedGroupByUrbanOrRural.value,
+                mining_plan: this.$store.state.miningTaskDescription,
+            };
+
+            this.$http
+                .post("/mining/cross", params)
+                .then((response) => {
+                    // 处理成功响应的数据
+                    console.log("挖掘完毕，获得记录：", response.data.record);
+                    this.$store.commit(
+                        "updateMiningRecord",
+                        response.data.record
+                    );
+                    console.log("挖掘完毕，获得请求：", response.data.request);
+                    this.$store.commit(
+                        "updateMiningRequest",
+                        response.data.request
+                    );
+                    console.log("挖掘完毕，获得结果：", response.data.result);
+                    this.$store.commit(
+                        "updateMiningResult",
+                        response.data.result
+                    );
+                })
+                .then(() => {
+                    this.$store.commit("incrementMiningStep");
+                    this.$router.push("/mining/step3for3");
+                })
+                .catch((error) => {
+                    // 处理请求错误
+                    console.error("Error in mining:", error);
+                });
         },
     },
 };

@@ -45,13 +45,32 @@ export default {
                 return selectedSet.has(computedString);
             });
         },
+        // 根据不同类型的请求入库，生成对应的url
+        getUrl() {
+            var url;
+            switch (this.$store.state.miningClassNumber) {
+                case 1:
+                    url = "/mining/style/store/knowledge";
+                    break;
+                case 2:
+                    url = "/mining/develop/store/knowledge";
+                    break;
+                case 3:
+                    url = "/mining/cross/store/knowledge";
+                    break;
+                case 4:
+                    url = "/mining/compare/store/knowledge";
+                    break;
+            }
+            return url;
+        },
         submitSelection() {
             //得到用户选中的知识
             const knowledgeList = this.getSelectedKnowledgeItems();
             console.log("Selected knowledge list:", knowledgeList);
             console.log("提交知识入库申请...");
             this.$http
-                .post("/mining/style/store/knowledge", knowledgeList)
+                .post(this.getUrl(), knowledgeList)
                 .then((response) => {
                     // 处理成功响应的数据
                     console.log("知识入库完毕");

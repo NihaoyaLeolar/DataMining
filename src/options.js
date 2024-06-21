@@ -3,6 +3,7 @@ export const miningType = [
     { name: "发展型知识", type: "DEVELOP" },
     { name: "交叉型知识", type: "CROSS" },
     { name: "比较型知识", type: "COMPARE" },
+    { name: "因素型知识", type: "FACTOR" }
 ]
 
 export const styleMiningResultType = [
@@ -15,6 +16,11 @@ export const styleMiningResultType = [
     { name: "极差", type: "extremeDeviation" },
     { name: "变异系数", type: "coefficientOfVariation" },
 ]
+
+export const crossMiningResultType = [
+    { name: "相关系数", type: "correlation" },
+]
+
 
 export const groupsByRegion = [
     { label: "全部", value: "ALL_REGION" },
@@ -293,7 +299,7 @@ export const concepts = [
         { label: '分析能力水平', value: 'd20415173', class: '细目', visible: true },
         { label: '评估论证水平', value: 'd20415174', class: '细目', visible: true },
         { label: '推理能力水平', value: 'd20415175', class: '细目', visible: true },
-        { label: '自我监控水平', value: 'd20415176', class: '细目', visible: true },
+        { label: '自我监控水平', value: 'd20415176', class: '细目', visible: false },
         { label: '动手操作能力', value: 'd20416177', class: '细目', visible: true },
         { label: '组织能力', value: 'd20416178', class: '细目', visible: true },
         { label: '发散性思维', value: 'd20417179', class: '细目', visible: true },

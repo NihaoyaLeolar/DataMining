@@ -4,61 +4,58 @@
     <div class="dialog-container" v-if="showDialog">
         <div class="dialog">
             <p class="title">知识条目细节</p>
-            <!-- 上部分 -->
-            <div class="dialog-header">
-                <div class="dialog-header-left">
-                    <h2> 基本信息</h2>
-                    <div class="card1 card-common">
-                        <section>
-                            知识类别：<em>{{ this.getKnowledgeTypeName(knowledge.knowledgeType) }}</em>
-                        </section>
-                        <section>
-                            知识描述：<em>{{ knowledge.description }}</em>
-                        </section>
-                        <section>
-                            生成时间：<em>{{ record.miningTime }}</em>
-                        </section>
-                    </div>
-                </div>
-                <div class="dialog-header-right">
-                    <h2>适用范围</h2>
-                    <div class="card2 card-common">
-                        <section>
-                            概念：<em>{{ knowledge.concept }}</em>
-                        </section>
-                        <section>
-                            人群：<em>{{ knowledge.crowds }}</em>
-                        </section>
-                        <section>
-                            时间：<em>{{ knowledge.time }}</em>
-                        </section>
-                    </div>
-                </div>
-            </div>
-            <!-- 中部分 -->
-            <div class="dialog-body">
-                <!-- 中间部分的内容 -->
-                <h2>具体内容</h2>
-                <div class="card3 card-common">
-                    <section>
-                        规则：<em>{{ knowledge.rule }}</em>
-                    </section>
-                    <section>
-                        知识解读：<em>{{ knowledge.interpretation }}</em>
-                    </section>
-                    <section v-if="knowledge.filePath">
-                        图片文件：<em @click="showImage">{{ knowledge.filePath }}</em>
-                        <div v-if="showImageModal" class="image-modal">
-                            <img :src="getImageUrl(knowledge.filePath)" alt="Knowledge Image">
-                            <button @click="hideImage">关闭</button>
+            <div class="body">
+                <div class="left">
+                    <div class="card1">
+                        <h2> 基本信息</h2>
+                        <div class="card11 card-common">
+                            <section>
+                                知识类别：<em>{{ this.getKnowledgeTypeName(knowledge.knowledgeType) }}</em>
+                            </section>
+                            <section>
+                                知识描述：<em>{{ knowledge.description }}</em>
+                            </section>
+                            <section>
+                                生成时间：<em>{{ record.miningTime }}</em>
+                            </section>
                         </div>
-                    </section>
+                    </div>
+                    <div class="card2">
+                        <h2>适用范围</h2>
+                        <div class="card22 card-common">
+                            <section>
+                                概念：<em>{{ knowledge.concept }}</em>
+                            </section>
+                            <section>
+                                人群：<em>{{ knowledge.crowds }}</em>
+                            </section>
+                            <section>
+                                时间：<em>{{ knowledge.time }}</em>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="card3">
+                        <!-- 中间部分的内容 -->
+                        <h2>具体内容</h2>
+                        <div class="card33 card-common">
+                            <section>
+                                规则：<em>{{ knowledge.rule }}</em>
+                            </section>
+                            <section>
+                                知识解读：<em>{{ knowledge.interpretation }}</em>
+                            </section>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right">
+                    <img :src="getImageUrl(knowledge.filePath)" alt="Knowledge Image">
                 </div>
             </div>
-            <!-- 下部分 -->
-            <div class="dialog-footer">
+            <div class="card4">
                 <h2>知识来源</h2>
-                <div class="card4 card-common">
+                <div class="card44 card-common">
                     <section>
                         生成方式：<em>手动生成</em>
                     </section>
@@ -67,6 +64,7 @@
                     </section>
                 </div>
             </div>
+
         </div>
         <button @click="closeDialog">关闭</button>
 
@@ -142,35 +140,48 @@ export default {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    width: 1000px;
-    height: 660px;
+    width: 1250px;
+    height: 720px;
     padding: 30px;
     padding-bottom: 0;
     overflow: auto; /* 如果内容过多，允许滚动 */
 }
 
-.dialog-header {
+.body {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px; /* 与中部分隔开一些距离 */
-}
-
-.dialog-header-left {
     flex: 1;
-    padding-right: 60px;
+    flex-direction: row;
 }
-.dialog-header-right {
+
+.left {
+    display: flex;
     flex: 1;
+    flex-direction: column;
 }
 
-.dialog-body {
+.right {
+    display: flex;
+    width: 750px;
 }
 
-.dialog-footer {
-    margin-top: 10px; /* 与中部分隔开一些距离 */
+img {
+    margin: 20px;
+    width: 720px;
 }
 
+.card1 {
+    padding-right: 10px;
+}
+.card2 {
+    padding-right: 10px;
+}
+.card3 {
+    padding-right: 10px;
+}
+.card4 {
+    padding-right: 10px;
+    padding-bottom: 40px;
+}
 .title {
     margin: 0;
     text-align: center;
@@ -181,8 +192,8 @@ export default {
 }
 h2 {
     color: #5ac15e;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 24px;
+    margin-bottom: 4px;
 }
 
 .card-common {
@@ -190,19 +201,19 @@ h2 {
     border-radius: 5px;
     align-content: center;
 }
-.card1 {
-    height: 120px;
+.card11 {
+    height: 110px;
 }
 
-.card2 {
-    height: 120px;
+.card22 {
+    height: 110px;
 }
 
-.card3 {
-    min-height: 150px;
+.card33 {
+    min-height: 110px;
 }
 
-.card4 {
+.card44 {
     min-height: 100px;
 }
 

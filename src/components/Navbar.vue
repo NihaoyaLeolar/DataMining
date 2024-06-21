@@ -10,7 +10,7 @@
                 <li>
                     <router-link to="/stuimage" class="nav-link">
                         <div class="single-nav" @click="resetProfilingPage">
-                            <img src="@/assets/img.png" class="nav-img">
+                            <img style="width: 36%; height: auto;" src="@/assets/huaxiang.png" class="nav-img">
                             学生画像
                         </div>
                     </router-link>
@@ -19,21 +19,27 @@
                 <li>
                     <router-link to="/mining" class="nav-link">
                         <div class="single-nav" @click="resetMiningPage">
-                            <img src="@/assets/mining.png" class="nav-img">
+                            <img src="@/assets/wajue.png" class="nav-img">
                             知识挖掘
                         </div>
                     </router-link>
                 </li>
-
+                <li>
+                    <router-link to="/zhongdian" class="nav-link">
+                        <div class="single-nav" @click="resetProfilingPage">
+                            <img style="width: 30%; height: auto;" src="@/assets/zhuizong.png" class="nav-img">
+                            终点事件追踪
+                        </div>
+                    </router-link>
+                </li>
                 <li>
                     <router-link to="/krepo" class="nav-link">
                         <div class="single-nav">
-                            <img src="@/assets/krepo.png" class="nav-img">
+                            <img style="width: 30%; height: auto;" src="@/assets/krepo.png" class="nav-img">
                             知识库
                         </div>
                     </router-link>
                 </li>
-
             </ul>
         </div>
     </nav>
@@ -87,7 +93,7 @@ export default {
 }
 .nav-text {
     margin-left: 15px;
-    font-size: 2.4em;
+    font-size: 32px;
 }
 
 .nav-container {
@@ -100,7 +106,7 @@ export default {
 .single-nav {
     display: flex;
     align-items: center; /* 垂直居中导航栏内容 */
-    margin-right: 1.6em;
+    margin-right: 36px;
     padding: 0.2em;
     transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
     position: relative; /* 添加相对定位 */
@@ -124,7 +130,7 @@ ul {
 .nav-link {
     color: #fff;
     text-decoration: none;
-    font-size: 1.6em;
+    font-size: 24px;
     transition: color 0.3s; /* 添加文字颜色过渡效果 */
 }
 

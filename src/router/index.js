@@ -5,15 +5,19 @@ import store from '@/store'; // 确保正确导入 Vuex store
 import StudentImagePage from '../views/Profiling/StudentImagePage.vue'
 import KnowledgeRepoPage from '../views/Repo/KnowledgeRepoPage.vue'
 import MiningPage from '../views/Mining/MiningPage.vue'
+import FactorPage from '../views/Factor/FactorPage.vue'
+
 
 import MiningPageStep1 from '../views/Mining/MiningPageStep1.vue'
 import MiningPageStep2For12 from '../views/Mining/MiningPageStep2For12.vue'
 import MiningPageStep2For3 from '../views/Mining/MiningPageStep2For3.vue'
 import MiningPageStep2For4 from '../views/Mining/MiningPageStep2For4.vue'
 import MiningPageStep3For1 from '../views/Mining/MiningPageStep3For1.vue'
+import MiningPageStep3For3 from '../views/Mining/MiningPageStep3For3.vue'
 import MiningPageStep4 from '../views/Mining/MiningPageStep4.vue'
-
 import ProfilingPageStep1 from '../views/Profiling/ProfilingPageStep1.vue'
+import FactorResult from '../views/Factor/FactorResult.vue'
+
 
 Vue.use(Router)
 
@@ -58,11 +62,21 @@ export default new Router({
                     path: 'step3for1',
                     component: MiningPageStep3For1
                 }, {
+                    path: 'step3for3',
+                    component: MiningPageStep3For3
+                }, {
                     path: 'step4',
                     component: MiningPageStep4
                 }
 
             ]
+        }, {
+            path: '/zhongdian',
+            name: 'FactorPage',
+            component: FactorPage,
+        }, {
+            path: '/factor/result',
+            component: FactorResult
         }, {
             path: '/krepo',
             name: 'KnowledgeRepoPage',

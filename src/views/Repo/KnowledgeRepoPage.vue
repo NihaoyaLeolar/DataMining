@@ -30,6 +30,7 @@
                         </tr>
                         <!-- Dialog组件 -->
                         <KnowledgeDialog :showDialog="dialogVisible" :knowledge="selectedKnowledge" :record="miningRecord" @close="closeDialog" />
+                        <KnowledgeDialogWithPic :showDialog="dialogWithPicVisible" :knowledge="selectedKnowledge" :record="miningRecord" @close="closeDialog" />
                     </tbody>
                 </table>
                 <!-- 翻页控件 -->
@@ -49,18 +50,21 @@
 <script>
 import { miningType } from "@/options.js"; // 导入选项数据
 import KnowledgeDialog from "../../components/Dialog/KnowledgeDialog.vue";
+import KnowledgeDialogWithPic from "../../components/Dialog/KnowledgeDialogWithPic.vue";
 
 export default {
     components: {
         KnowledgeDialog,
+        KnowledgeDialogWithPic,
     },
     data() {
         return {
             knowledgeEntries: [], // 存储从后端获取的知识条目
             currentPage: 1, // 当前页码
-            pageSize: 9, // 每页显示的条目数
+            pageSize: 7, // 每页显示的条目数
             totalEntries: 0, // 总条目数，从后端获取或计算
             dialogVisible: false,
+            dialogWithPicVisible: false,
             selectedKnowledge: null, // 用于存储当前选中的知识对象
             miningRecord: null,
         };
@@ -118,7 +122,11 @@ export default {
                     this.miningRecord = response.data;
                     this.selectedKnowledge = knowledge;
                     //显示
-                    this.dialogVisible = true;
+                    if (knowledge.filePath == null) {
+                        this.dialogVisible = true;
+                    } else {
+                        this.dialogWithPicVisible = true;
+                    }
                 })
                 .catch((error) => {
                     console.log(error);
@@ -126,6 +134,7 @@ export default {
         },
         closeDialog() {
             this.dialogVisible = false;
+            this.dialogWithPicVisible = false;
             this.selectedKnowledge = null;
         },
     },
