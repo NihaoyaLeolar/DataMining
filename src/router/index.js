@@ -70,7 +70,6 @@ export default new Router({
                     path: 'step4',
                     component: MiningPageStep4
                 }
-
             ]
         }, {
             path: '/zhongdian',
