@@ -40,6 +40,14 @@
                         </div>
                     </router-link>
                 </li>
+                <li>
+                    <router-link to="/chat" class="nav-link">
+                        <div class="single-nav">
+                            <img style="width: 30%; height: auto;" src="@/assets/krepo.png" class="nav-img">
+                            chat
+                        </div>
+                    </router-link>
+                </li>
             </ul>
         </div>
     </nav>

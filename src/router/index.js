@@ -6,6 +6,8 @@ import StudentImagePage from '../views/Profiling/StudentImagePage.vue'
 import KnowledgeRepoPage from '../views/Repo/KnowledgeRepoPage.vue'
 import MiningPage from '../views/Mining/MiningPage.vue'
 import FactorPage from '../views/Factor/FactorPage.vue'
+import RobotChat from '../views/RobotChat.vue'
+
 
 
 import MiningPageStep1 from '../views/Mining/MiningPageStep1.vue'
@@ -81,6 +83,10 @@ export default new Router({
             path: '/krepo',
             name: 'KnowledgeRepoPage',
             component: KnowledgeRepoPage
+        }, {
+            path: '/chat',
+            name: 'RobotChat',
+            component: RobotChat
         }
     ]
 })

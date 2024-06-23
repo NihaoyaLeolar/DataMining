@@ -112,8 +112,9 @@ export default {
             this.showImageModal = false;
         },
         getImageUrl(filePath) {
+            console.log(this.$http.defaults.baseURL + filePath);
             // 构建完整的图片URL，根据实际情况修改前缀部分
-            return "http://localhost:8080/" + filePath;
+            return this.$staticPath + filePath;
         },
     },
 };
