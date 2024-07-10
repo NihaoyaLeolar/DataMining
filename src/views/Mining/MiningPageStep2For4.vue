@@ -89,7 +89,7 @@
                     <button @click="generate">生成挖<br>掘计划</button>
                 </template>
                 <template v-slot:nextbutton>
-                    <button>开始<br>挖掘</button>
+                    <button @click="goto_mining">开始<br>挖掘</button>
                 </template>
             </mining-step-2-tail-layout>
         </div>
@@ -230,6 +230,61 @@ export default {
             // 处理对话框1中选定的概念
             console.log("conceptSelectedDialog4 事件被触发了");
             this.selectedConcept = concept;
+        },
+        goto_mining() {
+            if (this.$store.state.miningTaskDescription == "") {
+                alert("请先生成挖掘计划！");
+                return;
+            }
+            //防止在生成计划后、点击挖掘前又更改了表单内容，在挖掘前重新更新一下
+            this.generate();
+            var params = {
+                concept_value: this.selectedConcept.value,
+                concept_name: this.selectedConcept.label,
+                grade_valueA1: this.selectedTimeA1.value,
+                grade_valueA2: this.selectedTimeA2.value,
+                groups_by_regionA: this.selectedGroupByRegionA.value,
+                groups_by_urban_or_ruralA:
+                    this.selectedGroupByUrbanOrRuralA.value,
+                grade_valueB1: this.selectedTimeB1.value,
+                grade_valueB2: this.selectedTimeB2.value,
+                groups_by_regionB: this.selectedGroupByRegionB.value,
+                groups_by_urban_or_ruralB:
+                    this.selectedGroupByUrbanOrRuralB.value,
+                mining_plan: this.$store.state.miningTaskDescription,
+            };
+
+            // 在处理HTTP请求等异步操作时，使用Promise可以更好地控制异步操作的执行顺序和结果处理。当你需要在HTTP请求完成后执行某些操作时，
+            // 可以创建一个Promise对象来表示这个异步操作，并在异步操作完成后执行后续的操作。
+            // 这样可以确保在异步操作完成后再执行后续逻辑，避免了代码执行顺序不确定的问题。
+            this.$http
+                .post("/mining/compare", params)
+                .then((response) => {
+                    // 处理成功响应的数据
+                    console.log("挖掘完毕，获得记录：", response.data.record);
+                    this.$store.commit(
+                        "updateMiningRecord",
+                        response.data.record
+                    );
+                    console.log("挖掘完毕，获得请求：", response.data.request);
+                    this.$store.commit(
+                        "updateMiningRequest",
+                        response.data.request
+                    );
+                    console.log("挖掘完毕，获得结果：", response.data.result);
+                    this.$store.commit(
+                        "updateMiningResult",
+                        response.data.result
+                    );
+                })
+                .then(() => {
+                    this.$store.commit("incrementMiningStep");
+                    this.$router.push("/mining/step3for4");
+                })
+                .catch((error) => {
+                    // 处理请求错误
+                    console.error("Error in mining:", error);
+                });
         },
     },
 };

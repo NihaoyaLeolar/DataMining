@@ -16,6 +16,7 @@ import MiningPageStep2For3 from '../views/Mining/MiningPageStep2For3.vue'
 import MiningPageStep2For4 from '../views/Mining/MiningPageStep2For4.vue'
 import MiningPageStep3For1 from '../views/Mining/MiningPageStep3For1.vue'
 import MiningPageStep3For3 from '../views/Mining/MiningPageStep3For3.vue'
+import MiningPageStep3For4 from '../views/Mining/MiningPageStep3For4.vue'
 import MiningPageStep4 from '../views/Mining/MiningPageStep4.vue'
 import ProfilingPageStep1 from '../views/Profiling/ProfilingPageStep1.vue'
 import FactorResult from '../views/Factor/FactorResult.vue'
@@ -66,6 +67,9 @@ export default new Router({
                 }, {
                     path: 'step3for3',
                     component: MiningPageStep3For3
+                }, {
+                    path: 'step3for4',
+                    component: MiningPageStep3For4
                 }, {
                     path: 'step4',
                     component: MiningPageStep4

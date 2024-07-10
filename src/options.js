@@ -21,6 +21,10 @@ export const crossMiningResultType = [
     { name: "相关系数", type: "correlation" },
 ]
 
+export const compareMiningResultType = [
+    { name: "平均值比较", type: "avgComp" },
+]
+
 
 export const groupsByRegion = [
     { label: "全部", value: "ALL_REGION" },
